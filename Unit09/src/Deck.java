@@ -30,13 +30,18 @@ public class Deck {
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** completed 1a*/
+		cards = new ArrayList<Card>();
 		for (int i = 0; i<ranks.length; i++)
 		{
-			Card myCard = new Card(ranks[i], suits[i], values[i]);
-			cards.add(myCard);
+			for (String suitString : suits)
+			{
+				Card myCard = new Card(ranks[i], suitString, values[i]);
+				cards.add(myCard);
+			}
 		}
 		size = cards.size();
+		shuffle();
 	}
 
 
@@ -45,7 +50,7 @@ public class Deck {
 	 * @return true if this deck is empty, false otherwise.
 	 */
 	public boolean isEmpty() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** completed 1b */
 		return (size == 0);
 	}
 
@@ -54,7 +59,7 @@ public class Deck {
 	 * @return the number of undealt cards in this deck.
 	 */
 	public int size() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** completed 1c */
 		return size;
 	}
 
@@ -64,6 +69,17 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		int k = cards.size() - 1;
+		int r;
+		while (k>0)
+		{
+			r =  (int) ((int) (k+1) * Math.random());
+			cards.add(k+1, cards.get(r));
+			cards.add(r+1, cards.get(k));
+			cards.remove(r);
+			cards.remove(k);
+			k--;
+		}
 	}
 
 	/**
@@ -72,9 +88,14 @@ public class Deck {
 	 *         previously dealt.
 	 */
 	public Card deal() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** completed 1d */
+		if (isEmpty())
+		{
+			return null;
+		}
 		size--;
-		return cards.get(size);
+		Card c = cards.get(size);
+		return c;
 	}
 
 	/**
@@ -109,6 +130,26 @@ public class Deck {
 		}
 
 		rtn = rtn + "\n";
+		return rtn;
+	}
+	
+	public String printUndealt()
+	{
+		String rtn = "";
+		for (int k = size - 1; k >= 0; k--) {
+			rtn = rtn + cards.get(k);
+			if (k != 0) {
+				rtn = rtn + ", ";
+			}
+			if ((size - k) % 2 == 0) {
+				// Insert carriage returns so entire deck is visible on console.
+				rtn = rtn + "\n";
+			}
+		}
+		if (rtn.contentEquals(""))
+		{
+			rtn = "No undealt cards remain";
+		}
 		return rtn;
 	}
 }
