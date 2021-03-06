@@ -7,12 +7,12 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 1;
+	private static final int SHUFFLE_COUNT = 12;
 
 	/**
 	 * The number of values to shuffle.
 	 */
-	private static final int VALUE_COUNT = 4;
+	private static final int VALUE_COUNT = 51;
 
 	/**
 	 * Tests shuffling methods.
@@ -61,6 +61,33 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int k;
+		int midPos = 0;
+		if (values.length % 2 == 1)
+		{
+			midPos = (values.length+1)/2;
+		}
+		else 
+		{
+			midPos = values.length/2;
+		}
+		int[] shuffled = new int[values.length];
+		k = 0;
+		for (int j = 0; j<midPos; j++)
+		{
+			shuffled[k] = values[j]; 
+			k+=2;
+		}
+		k = 1;
+		for (int i = midPos; i<values.length; i++)
+		{
+			shuffled[k] = values[i];
+			k+=2;
+		}
+		for(int a = 0; a<values.length; a++)
+		{
+			values[a] = shuffled[a];
+		}
 	}
 
 	/**
@@ -76,5 +103,15 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int k = values.length - 1;
+		int r, temp;
+		while (k>0)
+		{
+			r =  (int) ((int) (k+1) * Math.random());
+			temp = values[k];
+			values[k] = values[r];
+			values[r] = temp;
+			k--;
+		}
 	}
 }
