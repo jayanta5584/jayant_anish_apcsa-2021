@@ -32,7 +32,7 @@ public class Card {
 	 *                  containing the point value of the card
 	 */
 	public Card(String cardRank, String cardSuit, int cardPointValue) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 ***, completed 1a. */
 		rank = cardRank;
 		suit = cardSuit;
 		pointValue = cardPointValue;
@@ -44,7 +44,7 @@ public class Card {
 	 * @return this <code>Card's</code> suit.
 	 */
 	public String suit() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** completed 1b */
 		return suit;
 	}
 
@@ -53,7 +53,7 @@ public class Card {
 	 * @return this <code>Card's</code> rank.
 	 */
 	public String rank() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 ***, completed 1b */
 		return rank;
 	}
 
@@ -62,7 +62,7 @@ public class Card {
 	 * @return this <code>Card's</code> point value.
 	 */
 	public int pointValue() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** completed 1b */
 		return pointValue;
 	}
 
@@ -73,8 +73,8 @@ public class Card {
 	 *         false otherwise.
 	 */
 	public boolean matches(Card otherCard) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-		if ((suit.contentEquals(otherCard.suit())) || (rank.contentEquals(otherCard.rank())) || (pointValue == otherCard.pointValue()))
+		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** completed 1c */
+		if (((this.suit).contentEquals(otherCard.suit())) || ((this.rank).contentEquals(otherCard.rank())) || (this.pointValue == otherCard.pointValue()))
 		{
 			return true;
 		}
