@@ -78,8 +78,8 @@ public class DeckArray {
 				Card temp = cardArr[k];
 				cardArr[k] = cardArr[r];
 				cardArr[r] = temp;
-				size = cardArr.length;
 			}
+			size = cardArr.length;
 		}
 
 		/**
