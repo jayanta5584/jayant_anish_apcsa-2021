@@ -75,7 +75,7 @@ public class Deck {
 		Card temp;
 		while (k>0)
 		{
-			r =  (int) ((int) (k+1) * Math.random());
+			r =  (int) ((k+1) * Math.random());
 			temp = cards.get(k);
 			cards.set(k, cards.get(r));
 			cards.set(r,  temp);
