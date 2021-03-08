@@ -12,7 +12,7 @@ public class Shuffler {
 	/**
 	 * The number of values to shuffle.
 	 */
-	private static final int VALUE_COUNT = 51;
+	private static final int VALUE_COUNT = 6;
 
 	/**
 	 * Tests shuffling methods.
