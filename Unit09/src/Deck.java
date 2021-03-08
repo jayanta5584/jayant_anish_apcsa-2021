@@ -69,15 +69,16 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		
 		int k = cards.size() - 1;
 		int r;
+		Card temp;
 		while (k>0)
 		{
 			r =  (int) ((int) (k+1) * Math.random());
-			cards.add(k+1, cards.get(r));
-			cards.add(r+1, cards.get(k));
-			cards.remove(r);
-			cards.remove(k);
+			temp = cards.get(k);
+			cards.set(k, cards.get(r));
+			cards.set(r,  temp);
 			k--;
 		}
 	}
