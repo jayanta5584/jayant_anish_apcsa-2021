@@ -13,18 +13,18 @@ public class Word implements Comparable<Word>
 		word = s;
 	}
 	
-	public int getLength(Word wd)
+	public int getLength()
 	{
-		return wd.getLength(wd);
+		return word.length();
 	}
 
 	public int compareTo( Word rhs )
 	{		
-		if(word.length() > getLength(rhs))
+		if(word.length() > rhs.getLength())
 		{
 			return 1;
 		}
-		else if (word.length() == getLength(rhs))
+		else if (word.length() == rhs.getLength())
 		{
 			return 0;
 		}
@@ -36,6 +36,6 @@ public class Word implements Comparable<Word>
 
 	public String toString()
 	{
-		return "";
+		return word;
 	}
 }
