@@ -28,8 +28,8 @@ public class MonsterRunner
 		char type2 = keyboard.next().charAt(0);
 
 		//instantiate monster one
-		Goblin monster1 = null;
-		Skeleton monster1 = null;
+		Monster monster1 = null;
+		Monster monster2 = null;
 		
 		if (type1 == 'G')
 		{
@@ -38,17 +38,18 @@ public class MonsterRunner
 		}
 		else
 		{
-			Skeleton monster1 = new Skeleton(name1, size1);
+			monster1 = new Skeleton(name1, size1);
 			System.out.println("Monster 1 - " + monster1);
 		}
+
 		if (type2 == 'G')
 		{
-			Goblin monster2 = new Goblin(name2, size2);
+			monster2 = new Goblin(name2, size2);
 			System.out.println("Monster 2 - " + monster2);
 		}
 		else
 		{
-			Skeleton monster2 = new Skeleton(name2, size2);
+			monster2 = new Skeleton(name2, size2);
 			System.out.println("Monster 2 - " + monster2);
 		}
 		
@@ -71,7 +72,7 @@ public class MonsterRunner
 		}
 		else 
 		{
-			System.out.println("Monster one has a different name than Monster two.")
+			System.out.println("Monster one has a different name than Monster two.");
 		}
 	}
 }
