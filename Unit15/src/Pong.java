@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.awt.event.ActionListener;
 
 public class Pong extends Canvas implements KeyListener, Runnable
@@ -20,6 +21,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private Paddle rightPaddle;
 	private boolean[] keys;
 	private BufferedImage back;
+	private int leftScore;
+	private int rightScore;
 
 
 	public Pong()
@@ -63,24 +66,37 @@ public class Pong extends Canvas implements KeyListener, Runnable
 
 
 		//see if ball hits left wall or right wall
-		if(!(ball.getX()>=10 && ball.getX()<=780))
+		if(!(ball.getX()>=0+leftPaddle.getW() && ball.getX()<=getWidth()-rightPaddle.getW()))
 		{
 			ball.setXSpeed(0);
 			ball.setYSpeed(0);
+			if(ball.getX() <= leftPaddle.getW())
+			{
+				rightScore++;
+			}
+			else if(ball.getX()>=getWidth() - rightPaddle.getW())
+			{
+				leftScore++;
+			}
 		}
 
 		
 		//see if the ball hits the top or bottom wall 
-		if ((ball.getY() == 0 || ball.getY() == getHeight() -1))
+		if (!(ball.getY() >= 0 || ball.getY() <= getHeight()))
 		{
 			ball.setYSpeed(-ball.getYSpeed());
 		}
 		
 		//see if the ball hits the left paddle
-		if (ball.getX() == 10 && (ball.getY() <= leftPaddle.getY() + leftPaddle.getH() || ball.getY() >= leftPaddle.getY()))
+		boolean leftCheck = ball.getX() <= leftPaddle.getX() + leftPaddle.getW() + 
+				Math.abs(ball.getXSpeed()) && (ball.getY() >= leftPaddle.getY() && 
+				ball.getY()<=leftPaddle.getY() + leftPaddle.getH() || ball.getY() + 
+				ball.getH() >- leftPaddle.getY() && ball.getY() + ball.getH() < leftPaddle.getY()
+				+ leftPaddle.getH());
+				
+		if (leftCheck)
 		{	
 			ball.setXSpeed(-ball.getXSpeed());
-			
 		}
 		
 		//see if the ball hits the right paddle
