@@ -40,8 +40,7 @@ public class Block implements Locatable
 	
 	public Block(int x, int y, Color col)
 	{
-		xPos = x;
-		yPos = y;
+		setPos(x, y);
 		color = col;
 	}
 	
