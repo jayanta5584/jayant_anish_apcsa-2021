@@ -5,7 +5,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block
+public class Ball extends Block implements Collidable
 {
 	private int xSpeed;
 	private int ySpeed;
@@ -24,16 +24,16 @@ public class Ball extends Block
 	{
 		super(x, y);
 		setDim(4, 4);
-		xSpeed = (int) (6*(Math.random() - 0.5));
-		ySpeed = (int) (6*(Math.random() - 0.5));
+		xSpeed = (int) (10*(Math.random() - 0.5));
+		ySpeed = (int) (10*(Math.random() - 0.5));
 	}
 	
 	   
    //add the set methods
 	public void setPos(int x, int y)
 	{
-		setX(200);
-		setY(200);
+		setX(x);
+		setY(y);
 	}
 	
 	public void setXSpeed(int x)
@@ -71,7 +71,6 @@ public class Ball extends Block
 		//draw the ball at its new location
       window.setColor(getC());
       window.fillRect(getX(), getY(), getW(), getH());
-      
    }
    
 	public boolean equals(Object obj)
@@ -92,6 +91,27 @@ public class Ball extends Block
 	public int getYSpeed()
 	{
 		return ySpeed;
+	}
+	
+	//collidable methods
+	public boolean didCollideLeft(Block obj)
+	{
+		return (this.getX() == obj.getX() && this.getY() - obj.getY() < obj.getH());
+	}
+	
+	public boolean didCollideRight(Block obj)
+	{
+		return (this.getX() == obj.getX() && this.getY() - obj.getY() < obj.getH());
+	}
+	
+	public boolean didCollideTop(Block obj)
+	{
+		return (this.getY() == 0);
+	}
+	
+	public boolean didCollideBottom(Block obj)
+	{
+		
 	}
 	
    //add a toString() method
