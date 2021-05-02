@@ -14,7 +14,7 @@ public class Paddle extends Block
 
    public Paddle()
    {
-	  super(10, 10, 10, 10, new Color(0, 0, 0));
+	  super(10, 10);
       speed = 5;
    }
    
