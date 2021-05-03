@@ -5,118 +5,122 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block implements Collidable
+public class Ball extends Block 
+//implements Collidable 
 {
 	private int xSpeed;
 	private int ySpeed;
 
-	public Ball()
+	public Ball() 
 	{
-		super(200,200);
-		setDim(4, 4);
+		super(200, 200, 10, 10);
+		xSpeed = 1;
+		ySpeed = 1;
+	}
+
+	// add the other Ball constructors
+	public Ball(int x, int y) 
+	{
+		super(x, y, 10, 10);
 		xSpeed = 3;
 		ySpeed = 1;
 	}
 
-	//add the other Ball constructors
-	
-	public Ball(int x, int y)
+	public Ball(int x, int y, int w, int h)
 	{
-		super(x, y);
-		setDim(4, 4);
-		xSpeed = (int) (10*(Math.random() - 0.5));
-		ySpeed = (int) (10*(Math.random() - 0.5));
+		super(x, y, 10, 10);
+		xSpeed = 3;
+		ySpeed = 1;
 	}
 	
-	   
-   //add the set methods
-	public void setPos(int x, int y)
+	public Ball(int x, int y, int w, int h, Color c)
+	{
+		super(x, y, 10, 10, c);
+		xSpeed = 3;
+		ySpeed = 1;
+	}
+
+	public Ball(int x, int y, int w, int h, Color c, int xs, int ys)
+	{
+		super(x, y, 10, 10, c);
+		xSpeed = xs;
+		ySpeed = ys;
+	}
+	
+	// add the set methods
+	public void setPos(int x, int y) 
 	{
 		setX(x);
 		setY(y);
 	}
-	
-	public void setXSpeed(int x)
+
+	public void setXSpeed(int x) 
 	{
 		xSpeed = x;
 	}
-	
-	public void setYSpeed(int y)
+
+	public void setYSpeed(int y) 
 	{
 		ySpeed = y;
 	}
-	
-	public void setSpeed(int x, int y)
+
+	public void setSpeed(int x, int y) 
 	{
 		setXSpeed(x);
 		setYSpeed(y);
 	}
-	
-	public void setDim(int w, int h)
+
+	public void moveAndDraw(Graphics window) 
 	{
-		setW(w);
-		setH(h);
+		// draw a white ball at old ball location
+		window.setColor(Color.white);
+		window.fillRect(getX(), getY(), getW(), getH());
+
+		setX(getX() + xSpeed);
+		// setY
+		setY(getY() + ySpeed);
+		// draw the ball at its new location
+		window.setColor(getC());
+		window.fillRect(getX(), getY(), getW(), getH());
 	}
-   
 
-   public void moveAndDraw(Graphics window)
-   {
-   	//draw a white ball at old ball location
-	   window.setColor(Color.white);
-	   window.fillRect(getX(), getY(), getW(), getH());
-
-      setX(getX()+xSpeed);
-		//setY
-      setY(getY()+ySpeed);
-		//draw the ball at its new location
-      window.setColor(getC());
-      window.fillRect(getX(), getY(), getW(), getH());
-   }
-   
-	public boolean equals(Object obj)
+	public boolean equals(Object obj) 
 	{
-		if (this.toString().equals(obj.toString())) 
-		{
-			return true;
-		}
-		return false;
-	}   
+		return (this.toString().equals(obj.toString()));
+	}
 
-   //add the get methods
-	public int getXSpeed()
+	// add the get methods
+	public int getXSpeed() 
 	{
 		return xSpeed;
 	}
-	
-	public int getYSpeed()
+
+	public int getYSpeed() 
 	{
 		return ySpeed;
 	}
-	
-	//collidable methods
-	public boolean didCollideLeft(Block obj)
-	{
+
+	/*
+	// collidable methods
+	public boolean didCollideLeft(Block obj) {
 		return (this.getX() == obj.getX() && this.getY() - obj.getY() < obj.getH());
 	}
-	
-	public boolean didCollideRight(Block obj)
-	{
+
+	public boolean didCollideRight(Block obj) {
 		return (this.getX() == obj.getX() && this.getY() - obj.getY() < obj.getH());
 	}
-	
-	public boolean didCollideTop(Block obj)
-	{
+
+	public boolean didCollideTop(Block obj) {
 		return (this.getY() == 0);
 	}
-	
-	public boolean didCollideBottom(Block obj)
-	{
-		
+
+	public boolean didCollideBottom(Block obj) {
+		return false;
 	}
-	
-   //add a toString() method
-	public String toString()
+*/
+	// add a toString() method
+	public String toString() 
 	{
-		return "Speed :: <" + xSpeed + ", " + ySpeed + ">\n" + super.toString();
+		return super.toString() + "Speed :: <" + xSpeed + ", " + ySpeed + ">\n";
 	}
 }
