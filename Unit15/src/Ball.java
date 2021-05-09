@@ -28,9 +28,16 @@ public class Ball extends Block
 
 	public Ball(int x, int y, int w, int h)
 	{
-		super(x, y, 10, 10);
+		super(x, y, w, h);
 		xSpeed = 3;
 		ySpeed = 1;
+	}
+	
+	public Ball (int x, int y, int w, int h, int xSpd, int ySpd)
+	{
+		super(x, y, w, h);
+		xSpeed = xSpd;
+		ySpeed = ySpd;
 	}
 	
 	public Ball(int x, int y, int w, int h, Color c)
