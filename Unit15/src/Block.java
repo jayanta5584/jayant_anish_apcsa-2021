@@ -45,8 +45,8 @@ public class Block implements Locatable
 	{
 		xPos = x;
 		yPos = y;
-		width = 0;
-		height = 0;
+		width = 10;
+		height = 10;
 		color = Color.BLACK;
 	}
 
@@ -54,8 +54,8 @@ public class Block implements Locatable
 	{
 		xPos = x;
 		yPos = y;
-		width = 0;
-		height = 0;
+		width = 10;
+		height = 10;
 		color = col;
 	}
 
